@@ -8,14 +8,15 @@ with open("reservas_maestro.txt", "w", encoding="utf-8") as f:
 with open("reservas_maestro.txt", "r", encoding="utf-8") as f:
     contenido = f.readlines()
 
+#creamos un diccionario que tendrá los contenidos
 contenido_archivos = {
     "reservas_madrid.txt": [],
     "reservas_londres.txt": [],
     "reservas_paris.txt": []
 }
-
+#un contador para ver cuantos archivos se han creado
 contador_archivos = 0
-
+#bucle para escribir las reservas a su archivo correspondiente y contar archivos creados
 for c in contenido:
     if "Madrid" in c:
         archivo = "reservas_madrid.txt"
@@ -32,9 +33,12 @@ for c in contenido:
     # Abrimos el archivo para escribir
     with open(archivo, "a+", encoding="utf-8") as f:
         f.write(c)
+    # guardamos la info en el diccionario 
     contenido_archivos[archivo].append(c)
 
 
+
+# imprimimos por pantalla los contenidos de cada archivo
 for nombre, ca in contenido_archivos.items():
     print("contenido de " + nombre)
     for c in ca:
